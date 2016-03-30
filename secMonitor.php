@@ -3,20 +3,13 @@ $file = "/var/log/secure";
 $len = filesize($file);
 $lastpos = $len;
 
-//printf("Starting up...\n");
-
 while (true) {
 	sleep(1);
-	//printf("Top of loop.\n");
 	clearstatcache(false, $file);
-	//printf("Cleared stat cache.\n");
 	$len = filesize($file);
-
-	//printf("len=%d lastpos=%d\n", $len, $lastpos);
 
 	if ($len < $lastpos) {
 		// the file was deleted or reset
-		//printf("File was deleted or reset.\n");
 		$lastpos = $len;
 	} else if ($len > $lastpos) {
 		$handle = fopen($file, "rb");
@@ -30,10 +23,9 @@ while (true) {
 		while (!feof($handle)) {
 			$line = fgets($handle);
 
-			//printf("line=%s\n", $line);
-
 			if (preg_match("/^.*Failed password for \w+ from \d{0,3}\.\d{0,3}\.\d{0,3}\.\d{0,3} port \d+ ssh2$/", $line, $matches)) {
-				//printf("Line matched regex:%s\nBlink!\n", rtrim($line));
+				// I did this the hard way because the --blink argument to the tool kept leaving it set to red all the time.
+				// This way the "blink" seems a lot more reliable.
 				$blink = popen("./blink1-tool -q --red", "r");
 				fpassthru($blink);
 				fclose($blink);
