@@ -1,0 +1,5 @@
+These are two tools I wrote to make my blink(1) show me basic information about what's going on with a headless server that sits under my desk. I typically run them both at the same time.
+
+You will need to grab a copy of the [blink toolkit](https://github.com/todbot/blink1.git) and have [PHP](http://php.net) installed to use these. I don't think there are any other dependencies, although the blink tool does have a few of its own, such as libusb 1.0. If you can't figure out how to get the blink tool to work on your own, this is the wrong place to ask. If you want to buy a blink(1) try [here](https://blink1.thingm.com/). They're pretty fun little things.
+
+I don't really plan on providing any support for this stuff and I'm only going to update it as needed to fix problems or if I get great new ideas for it. If you'd like to fork it, submit a PR or raise an issue feel free to do so. I will definitely take a look but I can't guarantee that I'll have time to help work on anything. Treat these more like example code or proofs of concept than anything else. YMMV.
