@@ -23,7 +23,7 @@ while (true) {
 		while (!feof($handle)) {
 			$line = fgets($handle);
 
-			if (preg_match("/^.*Failed password for \w+ from \d{0,3}\.\d{0,3}\.\d{0,3}\.\d{0,3} port \d+ ssh2$/", $line, $matches)) {
+			if (preg_match("/^.*Invalid user \w+ from \d{0,3}\.\d{0,3}\.\d{0,3}\.\d{0,3}.*$/", $line, $matches)) {
 				// I did this the hard way because the --blink argument to the tool kept leaving it set to red all the time.
 				// This way the "blink" seems a lot more reliable.
 				$blink = popen("./blink1-tool -q --red", "r");
